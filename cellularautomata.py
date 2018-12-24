@@ -1,18 +1,12 @@
 from kivy.app import App
-from kivy.lang import Builder
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.layout import Layout
-from kivy.uix.screenmanager import ScreenManager
-from kivy.uix.widget import Widget
 
-from cellularautomata.gui.gui import Gui
-from cellularautomata.gui.screens.setup.controller import Controller
+from cellularautomata.gui.controller import Controller
 
 
-class TestApp(App):
+class CellularAutomataApp(App):
 
     def build_grid(self):
         count = 10
@@ -56,4 +50,4 @@ class TestApp(App):
     #     return Builder.load_fil
 
 
-TestApp().run()
+CellularAutomataApp().run()
