@@ -1,0 +1,32 @@
+#:kivy 1.0
+#:import Controller cellularautomata.gui.screens.setup.controller.Controller
+
+<Controller>:
+    screen_manager: screen_manager
+
+    ScreenManager:
+        id: screen_manager
+        Screen:
+            name: "screen_1"
+            BoxLayout:
+                orientation: "vertical"
+
+                Label:
+                    text: "screen 1"
+                Button:
+                    text: "go to screen 2"
+                    on_press: root.foo_bar1()
+                Button:
+        Screen:
+            name: "screen_2"
+            BoxLayout:
+                orientation: "vertical"
+
+                Label:
+                    text: "screen 2"
+                Button:
+                    text: "go to screen 1"
+                    on_press: root.foo_bar2()
+                Button:
+                Button:
+                Button:

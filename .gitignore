@@ -1,0 +1,10 @@
+# pycharm
+.idea
+
+# unit test
+.pytest_cache
+
+# python
+*.pyc
+
+sdfasdf
