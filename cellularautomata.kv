@@ -7,26 +7,44 @@
     ScreenManager:
         id: screen_manager
         Screen:
-            name: "screen_1"
+            name: "setup_settings_screen"
             BoxLayout:
                 orientation: "vertical"
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (1, 0.85)
 
-                Label:
-                    text: "screen 1"
-                Button:
-                    text: "go to screen 2"
-                    on_press: root.foo_bar1()
-                Button:
+                    Label:
+                        text: "Change Map Size"
+                    Slider:
+                        id: map_size_slider
+                        min: 10
+                        max: 40
+                        step: 1
+                        value: 20
+                    Label:
+                        # when map_size_slider.value changes - update the text with the result of the method call
+                        text: root.setup_settings_screen_map_size(map_size_slider.value)
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (1, 0.15)
+
+                    Button:
+                        text: "Next"
+                        on_press: root.finish_setup_settings_screen()
         Screen:
-            name: "screen_2"
+            name: "setup_map_screen"
             BoxLayout:
                 orientation: "vertical"
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (1, 0.85)
 
-                Label:
-                    text: "screen 2"
-                Button:
-                    text: "go to screen 1"
-                    on_press: root.foo_bar2()
-                Button:
-                Button:
-                Button:
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (1, 0.15)
+
+                    Button:
+                        text: "Finish"
+                        on_press: root.finish_setup_map_screen()

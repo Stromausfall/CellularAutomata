@@ -5,17 +5,21 @@ from kivy.uix.screenmanager import ScreenManager
 
 class Controller(BoxLayout):
     screen_manager = ObjectProperty()
+    setup_screen_map_size = ObjectProperty()
 
-    def foo_bar1(self):
+    def finish_setup_settings_screen(self):
         sm:ScreenManager = self.screen_manager
 
-        sm.current = "screen_2"
+        sm.current = "setup_map_screen"
 
-        print("achange to screen_2")
+        print("achange to setup_map_screen")
 
-    def foo_bar2(self):
+    def finish_setup_map_screen(self):
         sm:ScreenManager = self.screen_manager
 
-        sm.current = "screen_1"
+        sm.current = "setup_settings_screen"
 
-        print("achange to screen_1")
+        print("achange to setup_settings_screen")
+
+    def setup_settings_screen_map_size(self, value):
+        return str(value) + "x" + str(value)
