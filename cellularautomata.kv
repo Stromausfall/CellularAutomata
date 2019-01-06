@@ -2,14 +2,15 @@
 #:import Controller cellularautomata.gui.controller.Controller
 
 <Controller>:
-    screen_manager: screen_manager
 
     ScreenManager:
         id: screen_manager
         Screen:
             name: "setup_settings_screen"
+
             BoxLayout:
                 orientation: "vertical"
+
                 BoxLayout:
                     orientation: "vertical"
                     size_hint: (1, 0.85)
@@ -24,7 +25,7 @@
                         value: 20
                     Label:
                         # when map_size_slider.value changes - update the text with the result of the method call
-                        text: root.setup_settings_screen_map_size(map_size_slider.value)
+                        text: root.setup_settings_screen_map_size_text(map_size_slider.value)
 
                 BoxLayout:
                     orientation: "vertical"
@@ -32,14 +33,20 @@
 
                     Button:
                         text: "Next"
-                        on_press: root.finish_setup_settings_screen()
+                        on_press: root.finish_setup_settings_screen(screen_manager, setup_map_screen_content)
+
         Screen:
             name: "setup_map_screen"
+
             BoxLayout:
                 orientation: "vertical"
-                BoxLayout:
+
+                GridLayout:
+                    id: setup_map_screen_content
                     orientation: "vertical"
                     size_hint: (1, 0.85)
+                    cols: map_size_slider.value
+                    rows: map_size_slider.value
 
                 BoxLayout:
                     orientation: "vertical"
@@ -47,4 +54,33 @@
 
                     Button:
                         text: "Finish"
-                        on_press: root.finish_setup_map_screen()
+                        on_press: root.finish_setup_map_screen(setup_map_screen_content, simulation_screen_content, screen_manager)
+
+        Screen:
+            name: "simulation_screen"
+
+            BoxLayout:
+                orientation: "vertical"
+
+                GridLayout:
+                    id: simulation_screen_content
+                    orientation: "vertical"
+                    size_hint: (1, 0.85)
+                    cols: map_size_slider.value
+                    rows: map_size_slider.value
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: (1, 0.15)
+
+                    Label:
+                        size_hint: (0.15, 1)
+                        # when simulation_speed_slider.value changes - update the text with the result of the method call
+                        text: root.simulation_screen_speed_text(simulation_speed_slider.value)
+                    Slider:
+                        size_hint: (0.85, 1)
+                        id: simulation_speed_slider
+                        min: 0
+                        max: 4
+                        step: 0.2
+                        value: 0
