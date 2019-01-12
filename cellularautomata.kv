@@ -2,6 +2,7 @@
 #:import Controller cellularautomata.gui.controller.Controller
 
 <Controller>:
+    simulation_screen_content:simulation_screen_content
 
     ScreenManager:
         id: screen_manager
@@ -54,7 +55,7 @@
 
                     Button:
                         text: "Finish"
-                        on_press: root.finish_setup_map_screen(setup_map_screen_content, simulation_screen_content, screen_manager)
+                        on_press: root.finish_setup_map_screen(screen_manager, setup_map_screen_content)
 
         Screen:
             name: "simulation_screen"
@@ -81,6 +82,7 @@
                         size_hint: (0.85, 1)
                         id: simulation_speed_slider
                         min: 0
-                        max: 4
+                        max: 20
                         step: 0.2
                         value: 0
+                        on_value: root.simulation_speed_slider_value_change(simulation_speed_slider.value)
